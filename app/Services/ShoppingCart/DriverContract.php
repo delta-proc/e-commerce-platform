@@ -6,13 +6,13 @@ use Illuminate\Support\Collection;
 
 interface DriverContract
 {
-    public function addLine(CartLineContract $product);
+    public function add(CartLineContract $product);
 
-    public function removeLine(CartLineContract $product);
+    public function remove(CartLineContract $product);
 
-    public function incrementLine(CartLineContract $product);
+    public function increment(CartLineContract $product);
 
-    public function decrementLines(CartLineContract $product);
+    public function decrement(CartLineContract $product);
 
     public function getLines(): Collection;
 }

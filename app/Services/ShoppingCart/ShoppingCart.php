@@ -16,30 +16,30 @@ class ShoppingCart
         $this->driver = $driver;
     }
 
-    public function addLine(CartLineContract $product)
+    public function add(CartLineContract $product)
     {
-        $this->driver->addLine($product);
+        $this->driver->add($product);
 
         return $this;
     }
 
-    public function removeLine(CartLineContract $product)
+    public function remove(CartLineContract $product)
     {
-        $this->driver->removeLine($product);
+        $this->driver->remove($product);
 
         return $this;
     }
 
-    public function incrementLine(CartLineContract $product)
+    public function increment(CartLineContract $product)
     {
-        $this->driver->incrementLine($product);
+        $this->driver->increment($product);
 
         return $this;
     }
 
-    public function decrementLine(CartLineContract $product)
+    public function decrement(CartLineContract $product)
     {
-        $this->driver->decrementLine($product);
+        $this->driver->decrement($product);
 
         return $this;
     }
