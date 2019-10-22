@@ -6,6 +6,8 @@ use Illuminate\Support\Collection;
 
 interface DriverContract
 {
+    public function has(CartLineContract $product);
+
     public function add(CartLineContract $product);
 
     public function remove(CartLineContract $product);

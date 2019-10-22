@@ -12,3 +12,11 @@
 */
 
 Route::view('/', 'welcome');
+
+Route::group(['prefix' => 'api/cart'], function () {
+    Route::get('list', 'CartController@list');
+    Route::put('add/{product}', 'CartController@add');
+    Route::delete('{product}/delete', 'CartController@delete');
+    Route::put('{product}/increment', 'CartController@increment');
+    Route::put('{product}/decrement', 'CartController@decrement');
+});
