@@ -2,13 +2,14 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Model;
+use App\Services\ShoppingCart\CartLineContract;
 
-class Product extends Model
+class Product extends Model implements CartLineContract
 {
     /**
-     * Get all products this product is contained by (if it's part of a package)
+     * Get all products this product is contained by (if it's part of a package).
      *
      * @return BelongsToMany
      */
@@ -18,7 +19,7 @@ class Product extends Model
     }
 
     /**
-     * Get all products contained by this product (if it's a package)
+     * Get all products contained by this product (if it's a package).
      *
      * @return BelongsToMany
      */
@@ -30,11 +31,16 @@ class Product extends Model
     /**
      * Check if the product is a package
      * TODO: Maybe extract to it's own column...
-     * 
-     * @return boolean
+     *
+     * @return bool
      */
     public function isPackage()
     {
-        return ($this->children());
+        return $this->children();
+    }
+
+    public function getCartIdentifierAttribute()
+    {
+        return self::class.":$this->id";
     }
 }
